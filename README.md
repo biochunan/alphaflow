@@ -119,12 +119,12 @@ Our ensemble evaluations may be reproduced via the following steps:
 3. Run `python -m scripts.analyze_ensembles --atlas_dir [DIR] --pdb_dir [DIR] --num_workers [N]`. This will produce an analysis file named `out.pkl` in the `pdb_dir`.
 4. Run `python -m scripts.print_analysis [PATH] [PATH] ...` with an arbitrary number of paths to `out.pkl` files. A formatted comparison table will be printed.
 
-## Training 
+## Training
 
 ### Downloading datasets
 
 To download and preprocess the PDB,
-1. Run `aws s3 sync --no-sign-request s3://pdbsnapshots/20230102/pub/pdb/data/structures/divided/mmCIF pdb_mmcif` from the desired directory. 
+1. Run `aws s3 sync --no-sign-request s3://pdbsnapshots/20230102/pub/pdb/data/structures/divided/mmCIF pdb_mmcif` from the desired directory.
 2. Run `find pdb_mmcif -name '*.gz' | xargs gunzip` to extract the MMCIF files.
 3. From the repository root, run `python -m scripts.unpack_mmcif --mmcif_dir [DIR] --outdir [DIR] --num_workers [N]`. This will preprocess all chains into NPZ files and create a `pdb_mmcif.csv` index.
 4. Download OpenProteinSet with `aws s3 sync --no-sign-request s3://openfold/ openfold` from the desired directory.
